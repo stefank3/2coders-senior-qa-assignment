@@ -1,15 +1,17 @@
 import type { Page } from '@playwright/test';
-import { pendingLocator } from '../support/locators';
+import { pendingLocator, pendingRoute } from '../support/placeholders';
 
 export class RecommendationsPage {
   constructor(private readonly page: Page) {}
-  async open() { await this.page.goto('/recommendations'); } // TODO: confirm route
-  get cards() { return this.page.locator(pendingLocator('RECOMMENDATION_CARDS')); }
-  get title() { return this.page.locator(pendingLocator('RECOMMENDATION_TITLE')); }
-  get poster() { return this.page.locator(pendingLocator('RECOMMENDATION_POSTER')); }
-  get releaseDate() { return this.page.locator(pendingLocator('RECOMMENDATION_RELEASE_DATE')); }
-  get popularity() { return this.page.locator(pendingLocator('RECOMMENDATION_POPULARITY')); }
-  get description() { return this.page.locator(pendingLocator('RECOMMENDATION_DESCRIPTION')); }
-  get next() { return this.page.locator(pendingLocator('CAROUSEL_NEXT')); }
-  get previous() { return this.page.locator(pendingLocator('CAROUSEL_PREVIOUS')); }
+  async open() {
+    await this.page.goto(pendingRoute('recommendations'));
+  }
+  get cards() { return this.page.locator(pendingLocator('recommendationCards')); }
+  get title() { return this.page.locator(pendingLocator('recommendationTitle')); }
+  get poster() { return this.page.locator(pendingLocator('recommendationPoster')); }
+  get releaseDate() { return this.page.locator(pendingLocator('recommendationReleaseDate')); }
+  get popularity() { return this.page.locator(pendingLocator('recommendationPopularity')); }
+  get description() { return this.page.locator(pendingLocator('recommendationDescription')); }
+  get next() { return this.page.locator(pendingLocator('carouselNext')); }
+  get previous() { return this.page.locator(pendingLocator('carouselPrevious')); }
 }

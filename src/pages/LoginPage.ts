@@ -1,16 +1,18 @@
 import type { Page } from '@playwright/test';
-import { pendingLocator } from '../support/locators';
+import { pendingLocator, pendingRoute } from '../support/placeholders';
 
 export class LoginPage {
   constructor(private readonly page: Page) {}
 
-  async open() { await this.page.goto('/login'); } // TODO: confirm actual route
-  get email() { return this.page.locator(pendingLocator('LOGIN_EMAIL_INPUT')); }
-  get password() { return this.page.locator(pendingLocator('LOGIN_PASSWORD_INPUT')); }
-  get submit() { return this.page.locator(pendingLocator('LOGIN_SUBMIT_BUTTON')); }
-  get google() { return this.page.locator(pendingLocator('LOGIN_GOOGLE_BUTTON')); }
-  get microsoft() { return this.page.locator(pendingLocator('LOGIN_MICROSOFT_BUTTON')); }
-  get error() { return this.page.locator(pendingLocator('LOGIN_ERROR_MESSAGE')); }
+  async open() {
+    await this.page.goto(pendingRoute('login'));
+  }
+  get email() { return this.page.locator(pendingLocator('loginEmail')); }
+  get password() { return this.page.locator(pendingLocator('loginPassword')); }
+  get submit() { return this.page.locator(pendingLocator('loginSubmit')); }
+  get google() { return this.page.locator(pendingLocator('loginGoogle')); }
+  get microsoft() { return this.page.locator(pendingLocator('loginMicrosoft')); }
+  get error() { return this.page.locator(pendingLocator('loginError')); }
 
   async loginByEmail(email: string, password: string) {
     await this.email.fill(email);

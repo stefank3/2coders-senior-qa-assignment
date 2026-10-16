@@ -2,4 +2,11 @@ node_modules/
 playwright-report/
 test-results/
 .env
+.env.*
+!.env.example
+blob-report/
+playwright/.cache/
+playwright/.auth/
+traces/
+*.tsbuildinfo
 .DS_Store

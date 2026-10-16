@@ -1,3 +1,4 @@
+import { pendingRoute } from '../src/support/placeholders';
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../src/pages/LoginPage';
 
@@ -15,7 +16,7 @@ test.fixme('AUTH-004: valid email credentials establish a session', async ({ pag
   await login.open();
   // TODO: use authorized test-account fixture or secret environment variables.
   await login.loginByEmail(process.env.TEST_EMAIL ?? '', process.env.TEST_PASSWORD ?? '');
-  await expect(page).toHaveURL(/recommendations/); // TODO: confirm route
+  await expect(page).toHaveURL(pendingRoute('recommendations')); // TODO: confirm route
 });
 
 test.fixme('AUTH-005: invalid credentials display an error', async ({ page }) => {
@@ -26,6 +27,6 @@ test.fixme('AUTH-005: invalid credentials display an error', async ({ page }) =>
 });
 
 test.fixme('AUTH-016: unauthenticated users cannot access recommendations', async ({ page }) => {
-  await page.goto('/recommendations'); // TODO: confirm protected route
-  await expect(page).toHaveURL(/login/); // TODO: confirm expected access policy
+  await page.goto(pendingRoute('recommendations')); // TODO: confirm protected route
+  await expect(page).toHaveURL(pendingRoute('login')); // TODO: confirm expected access policy
 });
